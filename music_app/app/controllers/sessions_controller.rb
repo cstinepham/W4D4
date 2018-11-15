@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
   def create
     #debugger
-    user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-    session[:session_token] = user.reset_session_token!
-
+    user = current_user
+    log_in_user!(user) if logged_in?
     redirect_to user_url(user)
   end
 

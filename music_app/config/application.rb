@@ -1,6 +1,11 @@
 require_relative 'boot'
 
 require 'rails/all'
+# require 'rails/all'
+
+require "rails"
+
+# Include each railties manually, excluding `active_storage/engine`
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,5 +20,6 @@ module MusicApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
   end
 end

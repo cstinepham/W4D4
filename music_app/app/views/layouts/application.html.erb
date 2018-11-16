@@ -10,7 +10,17 @@
   </head>
 
   <body>
-    <h1 style="color:gray; text-align:center;">Music App</h1>
+    <h1 style="color:gray; text-align:center; font-family:verdana;">~ Music App ~ </h1>
+
+    <% if current_user %>
+    <form action=" <%= session_url %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type ="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <input type="submit" name="" value="Log Out!">
+    </form>
+    <% end %>
+
     <img src="http://kmit.in/emagazine/wp-content/uploads/2017/10/1260-music.jpg" alt="">
     <%= yield %>
   </body>

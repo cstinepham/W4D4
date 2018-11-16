@@ -1,9 +1,16 @@
 class SessionsController < ApplicationController
+  before_action :
+
   def create
     #debugger
-    user = current_user
-    log_in_user!(user) if logged_in?
-    redirect_to user_url(user)
+    user = User.find_by_credentials(params[:user][:email], params[:user][:password])
+    if user
+      log_in_user!(user)
+      redirect_to user_url(user)
+    else
+      flash.now[:errors] = ["Invalid login! Try again."]
+      render :new
+    end
   end
 
   def new

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :
+  before_action :require_log_in, except: [:create, :new]
 
   def create
     #debugger
